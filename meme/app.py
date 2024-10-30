@@ -6,13 +6,16 @@ app=Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///posts.db'
 db=SQLAlchemy(app)
 
-class BlogPost(db.Model):
+class Product(db.Model):
     id=db.Column(db.Integer, primary_key=True)
-    title=db.Column(db.String(100),nullable=False)
-    content=db.Column(db.Text,nullable=False)
-    author=db.Column(db.String(20),nullable=False, default='N/A')
-    date_posted=db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-
+    name=db.Column(db.String(20),nullable=False)
+    description=db.Column(db.Text,nullable=False)
+    category=db.Column(db.String(20),nullable=False)
+    quantity=cost_price=db.Column(db.Integer, nullable=False)
+    cost_price=db.Column(db.Integer, nullable=False)
+    selling_price=db.Column(db.Integer, nullable=False)
+    supplier=cost_price=db.Column(db.String(20), nullable=False)
+    
     def __repr__(self):
         return 'Blogpost'+ str(self.id)
 @app.route('/')
